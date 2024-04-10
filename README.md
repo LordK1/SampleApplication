@@ -5,3 +5,5 @@ Experimenting:
  - Coroutines
  - MVVM
  - Retrofit
+ - Dagger Hilt
+ - GSON
