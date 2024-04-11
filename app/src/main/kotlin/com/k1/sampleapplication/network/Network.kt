@@ -5,8 +5,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Headers
+import javax.inject.Inject
 
-class Network {
+class Network @Inject constructor() {
     private val retrofit = Retrofit.Builder().baseUrl("https://random-data-api.com/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
