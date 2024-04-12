@@ -57,15 +57,20 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.compose.runtime.livedata)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.runtimeCompose)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.androidx.ui.tooling.preview.android)
     implementation(libs.retrofit.core)
     implementation(libs.retrofit.gson)
     implementation(libs.hilt.android)
+
+
     kapt(libs.hilt.compiler)
 
     testImplementation(libs.junit)
