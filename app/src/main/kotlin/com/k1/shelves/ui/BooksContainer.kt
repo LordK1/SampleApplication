@@ -20,6 +20,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.k1.shelves.R
 import com.k1.shelves.network.Book
 
@@ -57,9 +58,30 @@ fun BooksContainer(title: String, body: String, books: List<Book>) {
                         .fillMaxWidth()
                         .padding(8.dp)
                 ) {
-                    Text(text = item.title)
-                    Text(text = item.author)
-                    Text(text = item.genre)
+                    Text(
+                        text = item.title,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(8.dp, 4.dp),
+                        fontSize = 18.sp,
+                        fontStyle = MaterialTheme.typography.titleMedium.fontStyle
+                    )
+                    Text(
+                        text = item.author,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(8.dp, 4.dp),
+                        fontSize = 14.sp,
+                        fontStyle = MaterialTheme.typography.bodyMedium.fontStyle
+                    )
+                    Text(
+                        text = item.genre,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(8.dp, 4.dp),
+                        fontSize = 12.sp,
+                        fontStyle = MaterialTheme.typography.bodyMedium.fontStyle
+                    )
                 }
             }
         }
