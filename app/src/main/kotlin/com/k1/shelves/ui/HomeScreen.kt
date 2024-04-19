@@ -9,6 +9,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.k1.shelves.feature.books.ui.BooksContainer
+import com.k1.shelves.feature.books.ui.BooksViewModel
 
 @Composable
 fun HomeScreen(viewModel: BooksViewModel = hiltViewModel()) {

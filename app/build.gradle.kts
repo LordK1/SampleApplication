@@ -17,6 +17,9 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        vectorDrawables.useSupportLibrary = true
+
     }
 
     buildTypes {
@@ -37,6 +40,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.11"
@@ -44,7 +48,7 @@ android {
     packaging {
         resources.excludes.add("META-INF/gradle/incremental.annotation.processors")
     }
-    kapt{
+    kapt {
         correctErrorTypes = true
     }
 }
@@ -56,6 +60,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
+    // might not needed
     implementation(libs.androidx.compose.runtime.livedata)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.material)
@@ -71,8 +76,9 @@ dependencies {
     implementation(libs.retrofit.gson)
     implementation(libs.hilt.android)
 
-
     kapt(libs.hilt.compiler)
+
+    implementation(project(":feature:books"))
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

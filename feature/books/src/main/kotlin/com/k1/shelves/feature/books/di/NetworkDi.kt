@@ -1,6 +1,6 @@
-package com.k1.shelves.di
+package com.k1.shelves.feature.books.di
 
-import com.k1.shelves.network.Network
+import com.k1.shelves.feature.books.data.BooksApiImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -11,5 +11,5 @@ import dagger.hilt.components.SingletonComponent
 object NetworkDi {
 
     @Provides
-    fun provideNetwork() = Network()
+    fun provideBooksApiImpl() = BooksApiImpl()
 }

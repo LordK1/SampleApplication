@@ -1,4 +1,4 @@
-package com.k1.shelves.ui
+package com.k1.shelves.feature.books.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
@@ -21,8 +21,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.k1.shelves.R
-import com.k1.shelves.network.Book
+import com.k1.shelves.feature.books.R
+import com.k1.shelves.feature.books.data.Book
 
 @Composable
 fun BooksContainer(title: String, body: String, books: List<Book>) {
@@ -91,7 +91,8 @@ fun BooksContainer(title: String, body: String, books: List<Book>) {
 @Preview
 @Composable
 fun PreviewBooksPage() {
-    ShelvesTheme {
-        BooksContainer("Hello, Android!", "Jetpack Compose", emptyList())
-    }
+    // TODO : move it to core common ui
+//    ShelvesTheme {
+//        BooksContainer("Hello, Android!", "Jetpack Compose", emptyList())
+//    }
 }
