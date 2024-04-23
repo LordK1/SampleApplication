@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.konan.properties.Properties
+
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
@@ -8,13 +10,21 @@ plugins {
 android {
     namespace = "com.k1.shelves.feature.books"
     compileSdk = 34
+
+    val properties = Properties()
+    val propertiesFile = rootProject.file("local.properties")
+    if (propertiesFile.exists()) {
+        propertiesFile.inputStream().use { properties.load(it) }
+    }
+
+
     defaultConfig {
         minSdk = 24
-        //todo: get from main build.gradle.kts
-        buildConfigField("String", "API_KEY", "\"K8p4ApG2NO-riCbDY_oNnw\"")
-        buildConfigField("String", "BASE_URL", "\"https://random-data-api.com/\"")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "BASE_URL", properties.getProperty("BASE_URL").toString())
+        buildConfigField("String", "API_KEY", properties.getProperty("API_KEY").toString())
     }
 
     compileOptions {
