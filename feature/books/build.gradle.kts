@@ -13,6 +13,8 @@ android {
         //todo: get from main build.gradle.kts
         buildConfigField("String", "API_KEY", "\"K8p4ApG2NO-riCbDY_oNnw\"")
         buildConfigField("String", "BASE_URL", "\"https://random-data-api.com/\"")
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     compileOptions {
@@ -46,7 +48,9 @@ dependencies {
     implementation(libs.retrofit.core)
     implementation(libs.retrofit.gson)
     implementation(libs.hilt.android)
+
     kapt(libs.hilt.compiler)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

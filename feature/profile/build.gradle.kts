@@ -1,25 +1,18 @@
 plugins {
-    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     kotlin("kapt")
     alias(libs.plugins.hiltAndroid)
 }
 
 android {
-    namespace = "com.k1.shelves"
+    namespace = "com.k1.feature.profile"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.k1.shelves"
         minSdk = 24
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
-        vectorDrawables.useSupportLibrary = true
-
     }
 
     buildTypes {
@@ -45,44 +38,26 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.11"
     }
-    packaging {
-        resources.excludes.add("META-INF/gradle/incremental.annotation.processors")
-    }
-    kapt {
-        correctErrorTypes = true
-    }
 }
 
 dependencies {
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
-    implementation(libs.androidx.constraintlayout)
-    implementation(libs.androidx.activity.compose)
+    implementation(libs.material)
     implementation(platform(libs.androidx.compose.bom))
-    // might not needed
-    implementation(libs.androidx.compose.runtime.livedata)
+    implementation(libs.androidx.lifecycle.runtimeCompose)
+    implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.material)
-    implementation(libs.androidx.lifecycle.livedata.ktx)
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
-    implementation(libs.androidx.lifecycle.runtimeCompose)
-    implementation(libs.androidx.navigation.fragment.ktx)
-    implementation(libs.androidx.navigation.ui.ktx)
-    implementation(libs.androidx.navigation.compose)
-    implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.androidx.ui.tooling.preview.android)
     implementation(libs.retrofit.core)
     implementation(libs.retrofit.gson)
     implementation(libs.hilt.android)
-
+    implementation(libs.coil.compose)
     kapt(libs.hilt.compiler)
-
-    implementation(project(":feature:books"))
-    implementation(project(":feature:profile"))
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    debugImplementation(libs.androidx.ui.tooling)
 }

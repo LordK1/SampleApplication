@@ -30,7 +30,7 @@ fun BooksContainer(title: String, body: String, books: List<Book>) {
         // Header
         Row(modifier = Modifier.padding(8.dp)) {
             Image(
-                painter = painterResource(id = R.drawable.ic_launcher_foreground),
+                painter = painterResource(id = com.google.android.material.R.drawable.ic_clock_black_24dp),
                 contentDescription = "Some Image",
                 modifier = Modifier
                     .size(48.dp)

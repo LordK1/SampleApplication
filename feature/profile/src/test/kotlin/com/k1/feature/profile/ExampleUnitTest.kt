@@ -1,4 +1,4 @@
-package com.k1.shelves.feature.books
+package com.k1.feature.profile
 
 import org.junit.Test
 

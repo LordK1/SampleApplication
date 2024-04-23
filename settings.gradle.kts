@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "Shelves"
 include(":app")
 include(":feature:books")
+include(":feature:profile")
