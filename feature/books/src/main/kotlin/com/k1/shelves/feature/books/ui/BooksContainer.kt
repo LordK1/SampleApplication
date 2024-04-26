@@ -21,14 +21,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.k1.shelves.feature.books.R
 import com.k1.shelves.feature.books.data.Book
 
 @Composable
 fun BooksContainer(title: String, body: String, books: List<Book>) {
     Column {
         // Header
-        Row(modifier = Modifier.padding(8.dp)) {
+        Row(modifier = Modifier
+            .padding(8.dp)
+            .padding(4.dp, 8.dp)) {
             Image(
                 painter = painterResource(id = com.google.android.material.R.drawable.ic_clock_black_24dp),
                 contentDescription = "Some Image",
@@ -39,13 +40,11 @@ fun BooksContainer(title: String, body: String, books: List<Book>) {
             Spacer(modifier = Modifier.width(8.dp))
             Column {
                 Text(
-                    text = title,
-                    style = MaterialTheme.typography.titleLarge
+                    text = title, style = MaterialTheme.typography.titleLarge
                 )
                 Spacer(modifier = Modifier.width(4.dp))
                 Text(
-                    text = body,
-                    style = MaterialTheme.typography.bodyMedium
+                    text = body, style = MaterialTheme.typography.bodyMedium
                 )
             }
         }
