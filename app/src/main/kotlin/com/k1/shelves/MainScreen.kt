@@ -2,16 +2,14 @@ package com.k1.shelves
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.RowScope
-import androidx.compose.material.BottomNavigation
-import androidx.compose.material.BottomNavigationItem
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.LocalContentColor
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
@@ -42,21 +40,16 @@ fun MainScreen() {
     val navController = rememberNavController()
 
     Scaffold(topBar = {
-        TopAppBar(
-            colors = TopAppBarDefaults.topAppBarColors(
-                containerColor = MaterialTheme.colorScheme.primaryContainer,
-                titleContentColor = MaterialTheme.colorScheme.primary,
-            ),
-            title = {
-                Text("Shelves")
-            }
-        )
-    },
-        bottomBar = { BottomBar(navController = navController) },
-        snackbarHost = {
-            SnackbarHost(hostState = snackbarHostState)
-        },
-        floatingActionButton = {
+        TopAppBar(colors = TopAppBarDefaults.topAppBarColors(
+            containerColor = MaterialTheme.colorScheme.primaryContainer,
+            titleContentColor = MaterialTheme.colorScheme.primary,
+        ), title = {
+            Text("Shelves")
+        })
+    }, bottomBar = { BottomBar(navController = navController) }, snackbarHost = {
+        SnackbarHost(hostState = snackbarHostState)
+    }, floatingActionButton = {
+        if (navController.currentDestination?.route == BottomBarScreen.Home.route) {
             FloatingActionButton(onClick = {
                 coroutineScope.launch {
                     snackbarHostState.showSnackbar("Book", "Dismiss")
@@ -66,7 +59,7 @@ fun MainScreen() {
                 Icon(Icons.Default.Add, contentDescription = "Add")
             }
         }
-    ) {
+    }) {
         BottomBarNavGraph(navController = navController)
     }
 }
@@ -74,14 +67,12 @@ fun MainScreen() {
 @Composable
 fun BottomBar(navController: NavHostController) {
     val screens = listOf(
-        BottomBarScreen.Home,
-        BottomBarScreen.Search,
-        BottomBarScreen.Profile
+        BottomBarScreen.Home, BottomBarScreen.Search, BottomBarScreen.Profile
     )
 
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
-    BottomNavigation {
+    NavigationBar {
         screens.forEach { screen ->
             AddBottomNavigationItem(
                 screen = screen,
@@ -100,12 +91,10 @@ fun RowScope.AddBottomNavigationItem(
     navController: NavHostController,
     modifier: Modifier = Modifier
 ) {
-    BottomNavigationItem(
-        label = { Text(screen.title) },
+    NavigationBarItem(label = { Text(screen.title) },
         selected = currentDestination?.hierarchy?.any {
             it.route == screen.route
         } == true,
-        unselectedContentColor = LocalContentColor.current.copy(alpha = ContentAlpha.disabled),
         onClick = {
             navController.navigate(screen.route) {
                 popUpTo(navController.graph.findStartDestination().id)

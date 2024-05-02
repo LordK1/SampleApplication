@@ -1,6 +1,5 @@
 package com.k1.shelves.feature.books.data
 
-import com.google.gson.annotations.SerializedName
 import com.k1.shelves.feature.books.BuildConfig
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -29,13 +28,3 @@ data class BookList(
     val books: List<Book>
 )
 
-data class Book(
-    @SerializedName("book_title")
-    val title: String,
-    @SerializedName("book_author")
-    val author: String,
-    @SerializedName("book_genre")
-    val genre: String,
-    @SerializedName("book_description")
-    val description: String
-)
