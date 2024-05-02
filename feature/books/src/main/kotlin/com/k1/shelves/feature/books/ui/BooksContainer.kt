@@ -11,28 +11,31 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.google.android.material.R
 import com.k1.shelves.feature.books.data.Book
 
 @Composable
 fun BooksContainer(title: String, body: String, books: List<Book>) {
     Column {
         // Header
-        Row(modifier = Modifier
-            .padding(8.dp)
-            .padding(4.dp, 8.dp)) {
+        Row(
+            modifier = Modifier
+                .padding(8.dp)
+                .padding(4.dp, 8.dp)
+        ) {
             Image(
-                painter = painterResource(id = R.drawable.ic_clock_black_24dp),
+                painter = rememberVectorPainter(Icons.Default.Favorite),
                 contentDescription = "Some Image",
                 modifier = Modifier
                     .size(48.dp)

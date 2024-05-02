@@ -24,7 +24,3 @@ interface BooksApi {
 
 }
 
-data class BookList(
-    val books: List<Book>
-)
-
