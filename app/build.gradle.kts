@@ -3,8 +3,8 @@ import org.jetbrains.kotlin.konan.properties.Properties
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
-    kotlin("kapt")
     alias(libs.plugins.hiltAndroid)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -60,16 +60,12 @@ android {
     packaging {
         resources.excludes.add("META-INF/gradle/incremental.annotation.processors")
     }
-    kapt {
-        correctErrorTypes = true
-    }
 }
 
 dependencies {
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
-    implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
 
@@ -87,7 +83,7 @@ dependencies {
     implementation(libs.retrofit.gson)
     implementation(libs.hilt.android)
 
-    kapt(libs.hilt.compiler)
+    ksp(libs.hilt.compiler)
 
     implementation(project(":feature:books"))
     implementation(project(":feature:profile"))
